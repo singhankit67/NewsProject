@@ -5,6 +5,7 @@ All the images are in the images folder
 
 ###  homescreen
 <img src="images/Screenshot_20200607-231514_MyDaiilyNews[1].jpg" width=200 height=400>
+
 ###  top stories
 <img src="images/Screenshot_20200607-231522_MyDaiilyNews[1].jpg" width=200 height=400>
 
