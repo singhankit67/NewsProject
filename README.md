@@ -4,7 +4,7 @@ All the images are in the images folder
 <img src="images/Screenshot_20200607-170447_MyDaiilyNews[1].jpg" width=200 height=400>
 
 ###  TopStories
-<img src="images/Screenshot_20200607-231522_MyDaiilyNews[1].jpg" width=200 height=400>
+<img src="images/Screenshot_20200607-231514_MyDaiilyNews[1].jpg" width=200 height=400>
 ###  MainScreen
 <img src="images/Screenshot_20200607-231522_MyDaiilyNews[1].jpg" width=200 height=400>
 
