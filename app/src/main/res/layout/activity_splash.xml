@@ -7,29 +7,17 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical">
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="220dp"
         android:src="@drawable/ic_book_black_24dp"
         android:id="@+id/mainLogo"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/appName"
-        android:layout_centerInParent="true"
-        android:text="Daily News"
-        android:textSize="36dp"
-        app:fontFamily="@font/poppins_light"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        />
     </LinearLayout>
 
 </RelativeLayout>

@@ -8,34 +8,35 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
+        android:layout_height="104dp"
+        android:background="@drawable/background1">
         <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:minHeight="?actionBarSize"
-            android:paddingTop="16dp"
-            android:paddingStart="@dimen/appbar_padding"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:paddingEnd="8dp"
-            android:textColor="#B6FFFFFF"
-            android:textStyle="bold"
-            android:text="DailyNews"
+            android:paddingStart="16dp"
+            android:background="@drawable/background1"
+            android:paddingEnd="16dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:fontFamily="@font/poppins_bold"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-            tools:ignore="HardcodedText" />
-
+            android:text="DailyNews"
+            android:textColor="#80FFFFFF"/>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            />
+            android:layout_height="54dp"
+            app:tabBackground="@drawable/background1"
+            app:tabMode="fixed"
+            android:elevation="0dp"
+            app:tabRippleColor="@color/colorAccent1"
+            app:tabTextColor="#80FFFFFF"
+            app:tabIndicatorHeight="3dp"
+            app:tabSelectedTextColor="@color/colorAccent"
+            android:layout_gravity="center"/>
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

@@ -2,52 +2,92 @@ package com.example.mydaiilynews
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.WindowManager
+import android.view.animation.LinearInterpolator
+import android.view.animation.OvershootInterpolator
+import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.viewpager.widget.ViewPager
 import dmax.dialog.SpotsDialog
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_list_news.*
+import link.fls.swipestack.SwipeStack
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListNews : AppCompatActivity() {
+class ListNews : AppCompatActivity(){
     var source = ""
     lateinit var dialog:AlertDialog
     lateinit var mService:NewsService
-    var webHotUrl:String? = ""
-    var recyclerView1: RecyclerView? = null
-    //var swipeToRefresh1:SwipeRefreshLayout? = null
+    //var swipeStack:SwipeStack? = null
+    var viewPager2:ViewPager? = null
+    var distance :Int= 200
+    //var recyclerView1: RelativeLayout? = null
+    var swipeToRefresh1:SwipeRefreshLayout? = null
     lateinit var adapter:ListNewsAdapter
+    lateinit var query1: EditText
+    var imageButton1:ImageButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        fun backGroundColor() {
+            window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window?.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+            window?.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+            window?.setBackgroundDrawableResource(R.drawable.background)
+        }
         setContentView(R.layout.activity_list_news)
+        backGroundColor()
+        query1 = findViewById(R.id.searchbar2)
         mService = Common.newsService
-        dialog = SpotsDialog(this)
-        recyclerView1 = findViewById(R.id.recyclerView1)
-        recyclerView1!!.setHasFixedSize(true)
-        recyclerView1!!.layoutManager = LinearLayoutManager(this)
-        recyclerView1!!.itemAnimator = DefaultItemAnimator()
-        recyclerView1!!.isNestedScrollingEnabled =true
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        imageButton1 = findViewById(R.id.searchButton2)
+        dialog = SpotsDialog(this,R.style.Custom)
+        viewPager2 = findViewById(R.id.view_pager2)
+//        recyclerView1 = findViewById(R.id.relativeLayoutNoFound)
+//        swipeStack = findViewById(R.id.swipeStack)
+
+       // swipeStack!!.adapter = adapter
+        //swipeStack!!.setListener(this)
+        //recyclerView1!!.setHasFixedSize(true)
+        //recyclerView1!!.layoutManager = LinearLayoutManager(this)
+        //!!.itemAnimator = DefaultItemAnimator()
+        //recyclerView1!!.isNestedScrollingEnabled =true
         //recyclerView1!!.adapter = adapter
-        swipeToRefresh1.setOnRefreshListener { loadNews(source,true) }
+        swipeToRefresh1 = findViewById(R.id.swipeToRefresh1)
+        swipeToRefresh1!!.setDistanceToTriggerSync(distance)
+        swipeToRefresh1!!.setOnRefreshListener { loadNews(source,true,"") }
         if (intent != null) {
             source = intent.getStringExtra("source")
             if(!source.isEmpty()) {
-                loadNews(source, false)
+                loadNews(source, false,"")
 
             }
 
+        }
+        imageButton1!!.setOnClickListener {
+            if(!query1.text.toString().equals("")){
+                loadNews(source,true,query1.text.toString())
+                swipeToRefresh1!!.setOnRefreshListener { loadNews(source,true,query1.text.toString()) }
+                query1.isCursorVisible = false
+            }else{
+                loadNews(source,true,"")
+                swipeToRefresh1!!.setOnRefreshListener { loadNews(source,true,"") }
+            }
         }
     }
 
@@ -107,10 +147,16 @@ class ListNews : AppCompatActivity() {
 //                loadNews(source, false)
 //        }
 //    }
-    fun loadNews(source:String?,isRefreshed:Boolean){
+    fun loadNews(source:String?,isRefreshed:Boolean,query2:String){
         if(isRefreshed){
             dialog.show()
-            mService.getNewsFromSource(Common.getNewsApi(source!!)).enqueue(object :Callback<News>{
+            val call:Call<News>
+            if(!query1.text.toString().equals("")){
+                call = mService.getNewsFromSource(Common.getNewsApi2(query2))
+            }else{
+                call = mService.getNewsFromSource(Common.getNewsApi(source!!))
+            }
+            call.enqueue(object :Callback<News>{
                 override fun onFailure(call: Call<News>, t: Throwable) {
                     Toast.makeText(this@ListNews,"Failed1",Toast.LENGTH_SHORT).show()
                 }
@@ -121,16 +167,17 @@ class ListNews : AppCompatActivity() {
                     val removeFirstItem = response.body()!!.articles
                     //removeFirstItem?.removeAt(0)
                     adapter = ListNewsAdapter(removeFirstItem!!,this@ListNews)
-                    recyclerView1!!.adapter = adapter
+                    viewPager2!!.adapter = adapter
                     adapter.notifyDataSetChanged()
-                    swipeToRefresh1.isRefreshing = false
+                    swipeToRefresh1?.isRefreshing = false
+                    //initButton()
 
                 }
 
             })
         }
         else{
-            swipeToRefresh1.isRefreshing = true
+            swipeToRefresh1!!.isRefreshing = true
             //dialog.show()
             mService.getNewsFromSource(Common.getNewsApi(source!!)).enqueue(object :Callback<News>{
                 override fun onFailure(call: Call<News>, t: Throwable) {
@@ -138,18 +185,35 @@ class ListNews : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<News>, response: Response<News>) {
-                    swipeToRefresh1.isRefreshing =false
+                    swipeToRefresh1!!.isRefreshing =false
                     //webHotUrl = response.body()?.articles!![0].url
                     val removeFirstItem = response.body()!!.articles
                     //removeFirstItem!!.removeAt(0)
                     adapter = ListNewsAdapter(removeFirstItem!!,this@ListNews)
-                    recyclerView1!!.adapter = adapter
+                    viewPager2!!.adapter = adapter
                     adapter.notifyDataSetChanged()
-                    swipeToRefresh1.isRefreshing = false
+                    swipeToRefresh1!!.isRefreshing = false
+                    //initButton()
                 }
 
             })
         }
 
     }
+
+//    override fun onViewSwipedToLeft(position: Int) {
+//
+//    }
+//
+//    override fun onViewSwipedToRight(position: Int) {
+//
+//    }
+//
+//    override fun onStackEmpty() {
+//        swipeStack!!.visibility = View.GONE
+//        recyclerView1!!.visibility = View.VISIBLE
+//    }
+
+
+
 }

@@ -8,14 +8,22 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".FullNewsActivity"></activity>
-        <activity android:name=".ListNews"></activity>
+        <activity android:name=".SportsActivity"
+            android:label="Top-Headlines"
+            android:parentActivityName=".Main2Activity"/>
+
+        <activity android:name=".FullNewsActivity"
+            android:label="Full Article"/>
+        <activity android:name=".ListNews"
+            android:label="Top-Headlines"
+            android:parentActivityName=".Main2Activity"/>
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
@@ -29,11 +37,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+
+
+
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>

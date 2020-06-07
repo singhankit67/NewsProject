@@ -8,6 +8,7 @@ import java.util.Date
 object Common {
     val API_KEY = "71a46c4dac0f4761becf0206e7d67f1f"
     val BASE_URL = "https://newsapi.org"
+    //val BASE_URL = "https://api.breakingapi.com"
     val newsService:NewsService
     get() = RetrofitClient.getClient(BASE_URL).create(NewsService::class.java)//calling the the string  here it concatenates the base url with the
     fun getNewsApi(source:String):String{
@@ -18,6 +19,24 @@ object Common {
             .toString()
         return apiUrl
 
+    }
+    fun getNewsApi1(name:String):String{
+        val apiUrl1 = StringBuilder("https://newsapi.org/v2/top-headlines?country=in&language=en&category=")
+            .append(name)
+            .append("&apiKey=")
+            .append(API_KEY)
+            .toString()
+        return apiUrl1
+    }
+    fun getNewsApi2(query1:String):String{
+        val apiUrl1 = StringBuilder("https://newsapi.org/v2/everything?q=")
+            .append(query1)
+            .append("&language=en")
+            .append("&sortBy=popularity")
+            .append("&apiKey=")
+            .append(API_KEY)
+            .toString()
+        return apiUrl1
     }
     //our api key and stores the source and status in the website class
     //inShort we implemented the inteface news service here

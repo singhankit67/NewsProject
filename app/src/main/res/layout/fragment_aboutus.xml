@@ -1,16 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:background="@drawable/background">
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recyclerView"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="118dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        android:layout_marginBottom="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:background="@android:color/transparent"
+        android:id="@+id/cardViewnib3"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:focusable="true">
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@drawable/rectbutton1">
 
-</RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/CategoryName3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="ABOUT THE APP"
+                        android:textStyle="normal"
+                        app:fontFamily="@font/poppins_bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:text="This application is all about getting daily information of the news and the day to day headlines around us in about 30 to 40 words one can learn more about the artivle or the headline by seeing the full article .It is an application developed with the ideology to provide you with accurate and most trending news in less words.Used news api and tried to differentiate the news based on categories."
+                        android:fontFamily="@font/poppins_light"/>
+                    
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        android:layout_marginBottom="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:background="@android:color/transparent"
+        android:id="@+id/cardViewnib4"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:focusable="true">
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@drawable/rectbutton1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/CategoryName4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="ABOUT THE DEVELOPER"
+                        android:textStyle="normal"
+                        app:fontFamily="@font/poppins_bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:text="This is Ankit singh and android enthusiast currently pursuing a undergraduate degree and looking forward to build a career in android development."
+                        android:fontFamily="@font/poppins_light"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        android:layout_marginBottom="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:background="@android:color/transparent"
+        android:id="@+id/cardViewnib5"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:focusable="true">
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@drawable/rectbutton1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/CategoryName2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="GITHUB PROFILE"
+                        android:textStyle="normal"
+                        app:fontFamily="@font/poppins_bold"
+                        tools:ignore="HardcodedText" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:text="https://github.com/singhankit67"
+                        android:fontFamily="@font/poppins_light"
+                        android:textColor="@color/colorAccent"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+</ScrollView>

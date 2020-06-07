@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/swipeToRefresh2"
+    android:background="@drawable/background">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:paddingTop="0dp">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:cardElevation="6dp"
+            android:id = "@+id/searcher"
+            app:cardCornerRadius="8dp"
+            android:padding="10dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginBottom="-17dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="34dp"
+            app:cardBackgroundColor="@android:color/transparent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="280dp"
+                            android:layout_marginEnd="80dp"
+                            android:hint="Search"
+                            android:gravity="center_vertical"
+                            android:paddingStart="15dp"
+                            android:textColorHint="@color/colorAccent2"
+                            android:ems="10"
+                            android:id="@+id/searchbar"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/colorAccent"
+                            android:fontFamily="@font/poppins_light"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                            android:background="@android:color/transparent"/>
+                        <ImageButton
+                            android:layout_width="60dp"
+                            android:id="@+id/searchButton"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="0dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingEnd="0dp"
+                            android:foreground="@drawable/ripple_effect"
+                            android:background="@drawable/background1"
+                            android:src="@drawable/ic_baseline_search_24"/>
+
+                </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+                android:id="@+id/view_pager1"
+            android:layout_below="@+id/searcher"
+                app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+            app:icvp_scroll_duration="500"
+            app:icvp_center_page_scale_offset="25dp"
+            app:icvp_min_page_scale_offset="8dp"
+            app:icvp_max_page_scale="0.85"
+            app:icvp_min_page_scale="0.65"
+            android:paddingBottom="11dp"
+            app:icvp_medium_scaled="true"/>
+        </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

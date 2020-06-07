@@ -1,82 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="0dp"
     android:layout_marginStart="0dp"
     android:layout_centerInParent="true"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="6dp"
-    app:cardElevation="3dp"
+    app:cardElevation="0dp"
     android:layout_marginBottom="0dp"
     app:cardBackgroundColor="@android:color/transparent"
     android:background="@android:color/transparent"
-    android:id="@+id/cardViewnib"
+    android:id="@+id/cardViewnib1"
+    android:clickable="true"
+    android:foreground="@drawable/ripple_effect"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:focusable="true">
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:id="@+id/LLforBackground">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/content1"
-            android:visibility="invisible" />
+        android:background="@drawable/rectbutton1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/LLforBackground1"
             android:padding="10dp"
             >
-            <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginBottom="2dp"
-                android:id="@+id/ExerciseImage"
-                android:layout_gravity="center_horizontal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/CategoryName"
+                    android:id="@+id/CategoryName1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="0dp"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    android:textColor="#fff"
+                    android:textColor="@color/colorAccent"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="normal"
                     app:fontFamily="@font/poppins" />
 
                 <ImageButton
-                    android:id="@+id/ExpandButton"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:id="@+id/ExpandButton2"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
                     android:layout_gravity="end|bottom"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:background="@android:color/transparent"
                     android:clickable="true"
-                    android:elevation="7dp"
+                    android:elevation="0dp"
                     android:fontFamily="@font/poppins_light"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
-                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    android:src="@drawable/ic_baseline_navigate_next_240"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@android:color/transparent"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource"/>
             </LinearLayout>

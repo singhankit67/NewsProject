@@ -12,6 +12,15 @@
         <item name="android:textColor">@color/colorFont</item>
         <item name="android:itemBackground">@color/colorPrimaryDark</item>
     </style>
+    <style name="Custom" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="tabTextColor">@color/colorAccent</item>
+        <item name="backgroundColor">#022727</item>
+        <item name="DialogTitleText">Loading…</item>
+        <item name="DialogSpotColor">@color/colorAccent</item>
+        <item name="DialogSpotCount">6</item>
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

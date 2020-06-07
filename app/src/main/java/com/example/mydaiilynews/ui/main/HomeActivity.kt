@@ -3,6 +3,7 @@ package com.example.mydaiilynews.ui.main
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
@@ -10,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -31,14 +32,24 @@ import retrofit2.Response
 class HomeActivity : Fragment(){
     var myActivity: Activity? = null
     var recyclerView:RecyclerView? = null
+    var recyclerView3:RecyclerView? = null
     lateinit var mService:NewsService
     lateinit var adapter:ListSourceAdapter
     lateinit var dialog:AlertDialog
     var swipeTorefresh:SwipeRefreshLayout? = null
+    var relativeLayout :RelativeLayout? = null
+    var imageView:ImageView? = null
+    var text1:TextView? = null
+    var button1:Button? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerView = view?.findViewById(R.id.recyclerView)
+        recyclerView3 = view?.findViewById(R.id.recyclerView3)
+        relativeLayout = view?.findViewById(R.id.errorLayout)
+        imageView = view?.findViewById(R.id.errorImage)
+        text1 = view?.findViewById(R.id.errorMessage)
+        button1  = view?.findViewById(R.id.errorButton)
 //        recyclerView?.setHasFixedSize(true)
 //        val gridLayoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
 //        recyclerView?.layoutManager = gridLayoutManager
@@ -74,7 +85,7 @@ class HomeActivity : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //val arrayList = ArrayList<Model>()
+        val arrayList = ArrayList<Model>()
         backGroundColor()
         Paper.init(context) //Init cache Db
         mService = Common.newsService //InitService
@@ -85,156 +96,90 @@ class HomeActivity : Fragment(){
             loadWebsiteSource(true)
         }
         recyclerView?.setHasFixedSize(true)
-        val gridLayoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-        recyclerView?.layoutManager = gridLayoutManager
-        dialog = SpotsDialog(context)
+        for(i in 1..10) {
+            val gridLayoutManager =
+                GridLayoutManager(context, 1, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView?.layoutManager = gridLayoutManager
+        }
+            dialog = SpotsDialog(context, R.style.Custom)
         loadWebsiteSource(false)
-
-
-//        fun loadWebsitesSources() {
-//            dialog?.show()
-//            apiInterface?.sources?.enqueue(object: Callback<WebSite> {
-//                override fun onResponse(call: Call<WebSite>, response: Response<WebSite>) {
-//                    dialog?.dismiss()
-//                    val webSite = response.body()
-//                    if (webSite != null && response.body()!!.sources?.size!! > 0)
-//                    {
-//                        listSources?.clear()
-//                        listSources?.addAll(webSite.sources!!)
-//                    }
-//                    else
-//                    {
-//                        Toast.makeText(context, "No sources found", Toast.LENGTH_LONG).show()
-//                    }
-//                    adapter?.notifyDataSetChanged()
-//                }
-//                override fun onFailure(call:Call<WebSite>, t:Throwable) {
-//                    Toast.makeText(context, "Error:" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show()
-//                    dialog?.dismiss()
-//                }
-//            })
-//        }
-//        fun init() {
-//            recyclerView?.setHasFixedSize(true)
-//            val gridLayoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-//            recyclerView?.layoutManager = gridLayoutManager
-//            dialog = SpotsDialog(context,"Loading..")
-//            dialog!!.show()
-//            apiInterface = apiClient.getApiClient()//(ApiInterface::class.java)
-//            listSources = ArrayList()
-//            adapter = SourcesAdapter(context!!, listSources as ArrayList<Source>)
-//            recyclerView?.adapter = adapter
-//        }
-//        arrayList.add(
-//            Model(
-//                "SPORTS",
-//                R.drawable.ic_directions_run_black_24dp,
-//                //Color.parseColor("#004742"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),//#ebe8cf
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "START-UPS",
-//                R.drawable.ic_trending_up_black_24dp,
-//                //Color.parseColor("#1e665b"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "BUSINESS",
-//                R.drawable.ic_supervisor_account_black_24dp,
-//                //Color.parseColor("#1e665b"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#004742")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "ENTERTAINMENT",
-//                R.drawable.ic_videocam_black_24dp,
-//                //Color.parseColor("#004742"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "POLITICS",
-//                R.drawable.ic_euro_symbol_black_24dp,
-//                //Color.parseColor("#004742"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "FINANCE & ECONOMY",
-//                R.drawable.ic_euro_symbol_black_24dp,
-//                //Color.parseColor("#1e665b"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "INTERNATIONAL",
-//                R.drawable.ic_public_black_24dp,
-//                //Color.parseColor("#1e665b"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "AUTOMOBILE",
-//                R.drawable.ic_directions_car_black_24dp,
-//                //Color.parseColor("#004742"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "FASHION",
-//                R.drawable.ic_content_cut_black_24dp,
-//                //Color.parseColor("#004742"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        arrayList.add(
-//            Model(
-//                "EDUCATION",
-//                R.drawable.ic_collections_bookmark_black_24dp,
-//                //Color.parseColor("#1e665b"),
-//                R.drawable.bg_gradient,
-//                Color.parseColor("#ffffff"),
-//                Color.parseColor("#64FF1717")
-//            )
-//        )
-//        val modelAdapter = context?.let {
-//            ModelAdapter(
-//                arrayList,
-//                it
-//            )
-//        } // this means that the this all things should be implemented here
-//        val gridLayoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-//        recyclerView?.layoutManager =
-//            gridLayoutManager // here the view is attached to recycler view that means this should be implemented inside the recycler view
-//        recyclerView?.adapter = modelAdapter
+        arrayList.add(
+            Model(
+                "SPORTS",
+                R.drawable.ic_baseline_directions_bike_24,
+                //Color.parseColor("#004742"),
+                R.drawable.background2,
+                Color.parseColor("#ffffff")//#ebe8cf
+            ,"sports"
+            )
+        )
+        arrayList.add(
+            Model(
+                "GENERAL",
+                R.drawable.ic_baseline_language_24,
+                //Color.parseColor("#1e665b"),
+                R.drawable.background3,
+                Color.parseColor("#ffffff"),
+                "general"
+            )
+        )
+        arrayList.add(
+            Model(
+                "BUSINESS",
+                R.drawable.ic_euro_symbol_black_24dp,
+                //Color.parseColor("#1e665b"),
+                R.drawable.background3,
+                Color.parseColor("#ffffff"),
+                "business"
+            )
+        )
+        arrayList.add(
+            Model(
+                "ENTERTAINMENT",
+                R.drawable.ic_videocam_black_24dp,
+                //Color.parseColor("#004742"),
+                R.drawable.background2,
+                Color.parseColor("#ffffff"),
+                "entertainment"
+            )
+        )
+        arrayList.add(
+            Model(
+                "HEALTH",
+                R.drawable.ic_baseline_healing_24,
+                //Color.parseColor("#004742"),
+                R.drawable.background2,
+                Color.parseColor("#ffffff"),
+                "health"
+            )
+        )
+        arrayList.add(
+            Model(
+                "SCIENCE",
+                R.drawable.ic_baseline_import_contacts_24,
+                //Color.parseColor("#1e665b"),
+                R.drawable.background3,
+                Color.parseColor("#ffffff"),"science"
+            )
+        )
+        arrayList.add(
+            Model(
+                "TECHNOLOGY",
+                R.drawable.ic_baseline_emoji_objects_24,
+                //Color.parseColor("#1e665b"),
+                R.drawable.background3,
+                Color.parseColor("#ffffff"),"technology"
+            )
+        )
+        val modelAdapter = context?.let {
+            ModelAdapter(
+                arrayList,
+                it
+            )
+        } // this means that the this all things should be implemented here
+        val gridLayoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
+        recyclerView3?.layoutManager = gridLayoutManager // here the view is attached to recycler view that means this should be implemented inside the recycler view
+        recyclerView3?.adapter = modelAdapter
     }
     fun loadWebsiteSource(isRefresh:Boolean){
         if(!isRefresh){
@@ -295,6 +240,12 @@ class HomeActivity : Fragment(){
         activity?.window?.navigationBarColor = ContextCompat.getColor(requireContext(), android.R.color.transparent)
         activity?.window?.setBackgroundDrawableResource(R.drawable.background)
     }
+//    fun showErrorMessage(imageView:Int,title:String,message:String){
+//        if(relativeLayout!!.visibility == View.GONE){
+//            relativeLayout!!.visibility = View.VISIBLE
+//        }
+//        imageView.setImageResource
+   // }
 
 
 

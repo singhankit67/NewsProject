@@ -24,7 +24,7 @@ object ISO8601Parse {
         return df.parse(input)
     }
     @SuppressLint("SimpleDateFormat")
-    fun toString(date:Date):String{
+    fun toString(date:String):String{
         val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
         val tz =TimeZone.getTimeZone("UTC")
         df.timeZone = tz

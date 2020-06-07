@@ -34,20 +34,32 @@ class ListSourceAdapter(val website: WebSite, val context: Context): RecyclerVie
 //            itemView.content1.setTextColor(model.contentColor)
 //        }
 //    }
+    var limit = 10
     lateinit var fm:FragmentManager
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListSourceViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.cardview,parent,false)
+        val itemView = inflater.inflate(R.layout.cardview1,parent,false)
         return ListSourceViewHolder(itemView)
         //val v = LayoutInflater.from(parent.context).inflate(R.layout.cardview,parent,false) // tis means the changes should be made to this view
         //return ViewHolder(v)
     }
     override fun getItemCount(): Int {
-        return website.sources!!.size // this makes as many copies of the views as we want
+        if(website.sources!!.size > limit){
+            return limit;
+        }
+        else {
+
+            return website.sources!!.size // this makes as many copies of the views as we want
+        }
     }
     override fun onBindViewHolder(holder: ListSourceViewHolder, position: Int) {
         holder.source_title.text = website.sources!![position].name
         //val source = website.sources!![position].name
+        holder.cardViewb.setOnClickListener {
+            val intent = Intent(context, ListNews::class.java)
+            intent.putExtra("source", website.sources!![position].id)
+            context.startActivity(intent)
+        }
         holder.expandButton.setOnClickListener {
             val intent = Intent(context,ListNews::class.java)
             intent.putExtra("source",website.sources!![position].id)

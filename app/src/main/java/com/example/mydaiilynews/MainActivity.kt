@@ -23,23 +23,17 @@ class MainActivity : AppCompatActivity() {
         backGroundColor()
         val arrayList = ArrayList<Model>()
         arrayList.add(Model("SPORTS",R.drawable.ic_directions_run_black_24dp,Color.parseColor("#004742"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
-        arrayList.add(Model("START-UPS",R.drawable.ic_trending_up_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"), Color.parseColor("#64FF1717")))
-        arrayList.add(Model("BUSINESS",R.drawable.ic_supervisor_account_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"), Color.parseColor("#004742")))
+            "ankit"))
+        arrayList.add(Model("START-UPS",R.drawable.ic_trending_up_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"), "ankit"))
+        arrayList.add(Model("BUSINESS",R.drawable.ic_supervisor_account_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"), "ankit"))
         arrayList.add(Model("ENTERTAINMENT",R.drawable.ic_videocam_black_24dp,Color.parseColor("#004742"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
+            "ankit"))
         arrayList.add(Model("POLITICS",R.drawable.ic_euro_symbol_black_24dp,Color.parseColor("#004742"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
+            "ankit"))
         arrayList.add(Model("FINANCE & ECONOMY",R.drawable.ic_euro_symbol_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
+            "ankit"))
         arrayList.add(Model("INTERNATIONAL",R.drawable.ic_public_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
-        arrayList.add(Model("AUTOMOBILE",R.drawable.ic_directions_car_black_24dp,Color.parseColor("#004742"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
-        arrayList.add(Model("FASHION",R.drawable.ic_content_cut_black_24dp,Color.parseColor("#004742"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
-        arrayList.add(Model("EDUCATION",R.drawable.ic_collections_bookmark_black_24dp,Color.parseColor("#1e665b"), Color.parseColor("#ebe8cf"),
-            Color.parseColor("#64FF1717")))
+            "ankit"))
         val modelAdapter = ModelAdapter(arrayList,this) // this means that the this all things should be implemented here
         val gridLayoutManager = GridLayoutManager(this,2,LinearLayoutManager.VERTICAL,false)
         recyclerView.layoutManager = gridLayoutManager // here the view is attached to recycler view that means this should be implemented inside the recycler view

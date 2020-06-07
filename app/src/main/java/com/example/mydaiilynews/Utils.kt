@@ -10,20 +10,25 @@ import java.util.Date
 import java.util.Locale
 import java.util.Random
 object Utils {
-    var vibrantLightColorList = arrayOf<ColorDrawable>(ColorDrawable(Color.parseColor("#ffeead")), ColorDrawable(Color.parseColor("#93cfb3")), ColorDrawable(Color.parseColor("#fd7a7a")), ColorDrawable(Color.parseColor("#faca5f")), ColorDrawable(Color.parseColor("#1ba798")), ColorDrawable(Color.parseColor("#6aa9ae")), ColorDrawable(Color.parseColor("#ffbf27")), ColorDrawable(Color.parseColor("#d93947")))
-    val randomDrawbleColor:ColorDrawable
-        get() {
+    var vibrantLightColorList = arrayOf(ColorDrawable(Color.parseColor("#ffeead")),
+        ColorDrawable(Color.parseColor("#93cfb3")),
+        ColorDrawable(Color.parseColor("#fd7a7a")),
+        ColorDrawable(Color.parseColor("#faca5f")),
+        ColorDrawable(Color.parseColor("#1ba798")),
+        ColorDrawable(Color.parseColor("#6aa9ae")),
+        ColorDrawable(Color.parseColor("#ffbf27")),
+        ColorDrawable(Color.parseColor("#d93947")))
+    fun getrandomDrawbleColor():ColorDrawable{
             val idx = Random().nextInt(vibrantLightColorList.size)
             return vibrantLightColorList[idx]
         }
-    val country:String
-        get() {
+    fun getCountry():String{
             val locale = Locale.getDefault()
-            val country = (locale.getCountry()).toString()
-            return country.toLowerCase()
-        }
+            val country = (locale.country).toString()
+            return country.toLowerCase(Locale.ROOT)
+    }
     fun DateToTimeFormat(oldstringDate:String): String? {
-        val p = PrettyTime(Locale(country))
+        val p = PrettyTime(Locale(getCountry()))
         var isTime: String? = null
         try
         {
@@ -40,7 +45,7 @@ object Utils {
     @SuppressLint("SimpleDateFormat")
     fun DateFormat(oldstringDate:String):String {
         var newDate:String
-        val dateFormat = SimpleDateFormat("E, d MMM yyyy", Locale(country))
+        val dateFormat = SimpleDateFormat("E, d MMM yyyy", Locale(getCountry()))
         try
         {
             val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(oldstringDate)

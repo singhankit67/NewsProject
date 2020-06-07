@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="8dp"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@android:color/transparent"
-
-    >
+    android:background="@android:color/transparent"
+    app:cardPreventCornerOverlap="false">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="10dp"
+        android:id="@+id/LLforBackground2"
         android:background="@drawable/bg_gradient"
         >
         <RelativeLayout
@@ -22,14 +23,14 @@
             android:id="@+id/rll">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="250dp"
             android:id="@+id/ImageView"
             android:transitionName="ImageView"
             android:scaleType="centerCrop"
             tools:ignore="UnusedAttribute"/>
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="125dp"
                 android:layout_alignBottom="@+id/ImageView"
                 android:src="@drawable/bottom_shadow"
                 android:id="@+id/BottomShadow"/>
@@ -37,8 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:id="@+id/progressBar"
-                />
+                android:id="@+id/progressBar"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -47,6 +47,7 @@
                 android:maxLines="1"
                 android:textColor="#fff"
                 android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_marginEnd="190dp"
                 android:id="@+id/Author"
                 android:text="Author"
@@ -62,7 +63,7 @@
                 android:padding="5dp"
                 android:id="@+id/layoutDate"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginTop="-40dp"
                 android:background="@drawable/datebackground">
                 <ImageView
@@ -76,8 +77,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_marginStart="27dp"
                     android:layout_marginEnd="10dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:text="01 January 1990"
                     android:id="@+id/publishedAt"/>
 
@@ -88,9 +92,11 @@
                 android:layout_below="@id/BottomShadow"
                 android:id="@+id/Title"
                 android:fontFamily="@font/poppins_bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#fff"
                 android:paddingTop="10dp"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:paddingBottom="10dp"
                 android:text="3 killed by nikku's fart"
                 android:layout_marginStart="10dp"
@@ -108,10 +114,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/poppins_light"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:text="@string/dummy_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/elapsed_time"
         android:ellipsize="end"
-        android:maxLines="6"
+        android:maxLines="4"
         android:paddingBottom="5dp"
         android:textColor="#fff"/>
         <TextView
@@ -121,9 +127,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="0dp"
+            android:maxEms="10"
             android:fontFamily="@font/poppins_bold"
             android:text="Source"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
 
             android:drawablePadding="0dp"
             android:textColor="#fff"
@@ -140,22 +147,23 @@
             android:layout_marginTop="7dp"
             android:id="@+id/dot"
             android:fontFamily="@font/poppins_light"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
         <com.github.curioustechizen.ago.RelativeTimeTextView
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="35dp"
             android:layout_below="@id/Description"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_light"
             android:text="8 hours ago"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:ellipsize="end"
             android:layout_toEndOf="@+id/dot"
             android:maxLines="1"
             android:singleLine="true"
-            android:drawablePadding="10dp"
+            android:paddingBottom="0dp"
+            android:drawablePadding="25dp"
             android:textColor="#FFFFFF"
             android:id="@+id/time1"/>
         <ImageButton
@@ -171,10 +179,11 @@
         android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
         android:textStyle="bold"
         android:layout_gravity="end|bottom"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="5dp"
         android:elevation="7dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="15dp"
             android:layout_below="@id/source"
             android:layout_alignParentEnd="true"
