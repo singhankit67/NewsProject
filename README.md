@@ -8,3 +8,6 @@ All the images are in the images folder
 ###  MainScreen
 <img src="images/Screenshot_20200607-231522_MyDaiilyNews[1].jpg" width=200 height=400>
 
+### fullarticle
+
+<img src="images/Screenshot_20200607-231914_MyDaiilyNews.jpg" width=200 height=400>
