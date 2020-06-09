@@ -12,3 +12,5 @@ All the images are in the images folder
 ### fullarticle
 
 <img src="images/Screenshot_20200607-231914_MyDaiilyNews.jpg" width=200 height=400>
+
+### The apk file is provided in the release section at the top please go ahead download the app and have a look at it
